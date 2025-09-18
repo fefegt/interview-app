@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "projects": {
+    "interview-app": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/interview-app",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [],
+            "tsConfig": "tsconfig.json",
+            "inlineStyleLanguage": "css",
+            "assets": [],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": { "browserTarget": "interview-app:build" }
+        }
+      }
+    }
+  },
+  "defaultProject": "interview-app",
+  "cli": {
+    "analytics": false
+  }
+}

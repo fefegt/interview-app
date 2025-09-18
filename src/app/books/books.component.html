@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="create()">
+  <input formControlName="name" placeholder="Title" />
+  <input type="number" formControlName="price" placeholder="Price" />
+  <input type="number" formControlName="authorId" placeholder="AuthorId" />
+  <button type="submit">Create</button>
+</form>
+
+<ul>
+  <li *ngFor="let b of books; trackBy: trackById">
+    {{ b.title }} — {{ b.authorName || '(sin autor)' }} — {{ b.published || '(sin fecha)' }}
+  </li>
+</ul>
