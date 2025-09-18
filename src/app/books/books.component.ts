@@ -9,13 +9,13 @@ import { BooksService } from '../services/books.service';
 })
 export class BooksComponent implements OnInit {
   form = this.fb.group({
-    // Hay alguna propiedad faltante?
     name: ['', Validators.required],
     price: [0, Validators.min(0)],
     authorId: [1, Validators.required]
   });
 
   books: BookVm[] = [];
+  loading = false;
 
   constructor(private fb: FormBuilder, private api: BooksService) {}
 
@@ -24,17 +24,17 @@ export class BooksComponent implements OnInit {
   }
 
   load() {
+    this.loading = true;
     this.api.getAll().subscribe({
-      next: data => this.books = data,
-      error: err => console.error('GET error', err)
+      next: data => { this.books = Array.isArray(data) ? data : []; this.loading = false; },
+      error: _ => { this.books = []; this.loading = false; }
     });
   }
 
   create() {
     const v = this.form.value;
-    // Esta bien el payload?
     const payload: any = {
-      title: (v as any).name,
+      title: (v as any).name,   // ES ESTE EL CAMPO?
       price: v.price ?? 0,
       authorId: v.authorId ?? 1
     };
@@ -44,6 +44,6 @@ export class BooksComponent implements OnInit {
     });
   }
 
-  // Revisa bien el trackBy
+  // ESTA BIEN EL id?
   trackById = (_: number, item: BookVm) => (item as any).id;
 }

@@ -27,7 +27,6 @@
       }
     }
   },
-  "defaultProject": "interview-app",
   "cli": {
     "analytics": false
   }

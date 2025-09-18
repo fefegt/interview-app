@@ -14,6 +14,5 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "DOM"],
     "skipLibCheck": true,
-    "ignoreDeprecations": "6.0"
   }
 }
